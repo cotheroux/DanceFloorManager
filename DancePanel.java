@@ -13,6 +13,9 @@ import javax.swing.JTextField;
  **/
 public class DancePanel extends JPanel
 {
+    public JButton addDanceButton;
+    public JTextField danceNameTextbox;
+    
     public DancePanel()
     {
         super();
@@ -28,7 +31,7 @@ public class DancePanel extends JPanel
         //danceNameLabel.setBackground(Color.gray);
         this.add(danceNameLabel);
         
-        JTextField danceNameTextbox = new JTextField(30);
+        danceNameTextbox = new JTextField(30);
         this.add(danceNameTextbox);
         
         JRadioButton lineRadio    = new JRadioButton("En ligne");
@@ -44,7 +47,7 @@ public class DancePanel extends JPanel
         JButton cancelDanceButton = new JButton("Annuler");
         this.add(cancelDanceButton);
 
-        JButton addDanceButton = new JButton("Ajouter");
+        addDanceButton = new JButton("Ajouter");
         this.add(addDanceButton);
     }
 }

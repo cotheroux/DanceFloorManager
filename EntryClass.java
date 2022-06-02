@@ -22,19 +22,26 @@ public class EntryClass
 	public static void main(String args[])
 	{
         //createWindow();
-        ControlWindow controlWindow = new ControlWindow();
         DisplayWindow displayWindow = new DisplayWindow();
+        ControlWindow controlWindow = new ControlWindow(displayWindow);
         
         Vector<DanceFloorSet> dfsa = new Vector<DanceFloorSet>();
         DanceFloorSet dfs1 = new DanceFloorSet();
         DanceFloorSet dfs2 = new DanceFloorSet();
         Dance d1 = new Dance("Chill Factor");
-        Dance d2 = new Dance("Un maudite longue danse pour rien, mais รงa va tester mon programme");
+        Dance d2 = new Dance("Un maudite longue danse pour rien, mais ça va tester mon programme");
         
         dfs1.add(d1);
         dfs2.add(d2);
         dfsa.add(dfs1);
         dfsa.add(dfs2);
+        
+        displayWindow.listNextDances(dfsa);
+        
+        DanceFloorSet dfs3 = new DanceFloorSet();
+        Dance d3 = new Dance("Here we go");
+        dfs3.add(d3);
+        dfsa.add(dfs3);
         
         displayWindow.listNextDances(dfsa);
 	}

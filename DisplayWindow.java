@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
@@ -15,6 +16,7 @@ public class DisplayWindow extends JFrame
     {
         super("DisplayNextDance - Display Window");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.getContentPane().setBackground(Color.black);
         
         int nbDancesDisplayed = 5;
         int nbAlternativesDisplayed = 1;
@@ -50,15 +52,34 @@ public class DisplayWindow extends JFrame
         this.setVisible(true);
     }
     
-    public void listNextDances(Vector<DanceFloorSet> dfsa)
+    public void listNextDances(Vector<DanceFloorSet> dances)
     {
         int i = 0;
-        for (DanceFloorSet dfs : dfsa)
+        for (Vector<JLabel> cols : labels)
+        {
+            int j = 0;
+            for (JLabel label : cols)
+            {
+                if ((i < dances.size())
+                /*&&  (j < dances.get(i).size())*/)
+                {
+                    label.setText(dances.get(i).get(j).toString());
+                }
+                else
+                {
+                    label.setText("");
+                }
+                adjustFontSize(label);
+                ++j;
+            }
+            ++i;
+        }
+        /*for (DanceFloorSet dfs : dances)
         {
             labels.get(i).get(0).setText(dfs.get(0).toString());
             adjustFontSize(labels.get(i).get(0));
             ++i;
-        }
+        }*/
     }
     
     /**

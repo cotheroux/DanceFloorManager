@@ -10,7 +10,8 @@ public class EntryClass
         
         JLabel textLabel = new JLabel("I'm a label in the window", SwingConstants.CENTER);
         textLabel.setPreferredSize(new Dimension(300, 100));
-        frame.getContentPane().add(textLabel, BorderLayout.CENTER);
+        //frame.getContentPane().add(textLabel, BorderLayout.CENTER);
+        frame.getContentPane().add(textLabel);
         
         frame.setLocationRelativeTo(null);
         frame.pack();
@@ -19,7 +20,11 @@ public class EntryClass
     
 	public static void main(String args[])
 	{
-		System.out.println("Hello!");
-        createWindow();
+        //createWindow();
+        //ControlWindow controlWindow = new ControlWindow();
+        DisplayWindow displayWindow = new DisplayWindow();
+        
+        DanceFloorSet dfs = new DanceFloorSet();
+        displayWindow.listNextDances(dfs);
 	}
 }

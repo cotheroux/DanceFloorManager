@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -26,11 +27,20 @@ public class ControlWindow extends JFrame
         DancePanel dancePanel = new DancePanel();
         this.getContentPane().add(dancePanel, BorderLayout.CENTER);
         
+        JButton north = new JButton("Nord");
+        JButton south = new JButton("Sud");
+        JButton east  = new JButton("Est");
+        JButton west  = new JButton("Ouest");
+        this.add(north, BorderLayout.PAGE_START);
+        this.add(south, BorderLayout.PAGE_END);
+        this.add(west,  BorderLayout.LINE_START);
+        this.add(east,  BorderLayout.LINE_END);
+        
         dancePanel.addDanceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                JOptionPane.showMessageDialog(null, "test");
+                //JOptionPane.showMessageDialog(null, "test");
                 Dance d = new Dance(dancePanel.danceNameTextbox.getText());
                 DanceFloorSet df = new DanceFloorSet();
                 df.add(d);

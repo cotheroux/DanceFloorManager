@@ -1,5 +1,10 @@
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
+import java.awt.Rectangle;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import java.util.Vector;
 
 public class DisplayWindow extends JFrame
@@ -35,7 +40,7 @@ public class DisplayWindow extends JFrame
             for (int j = 0; j < nbAlternativesDisplayed; ++j)
             {
                 //JLabel label = new JLabel(Integer.toString(i));
-                JLabel label = new JLabel(i + " " + j);
+                JLabel label = new JLabel(i + " " + j, SwingConstants.CENTER);
                 this.add(label);
                 cols.add(label);
             }
@@ -45,8 +50,39 @@ public class DisplayWindow extends JFrame
         this.setVisible(true);
     }
     
-    public void listNextDances(DanceFloorSet[] dfs)
+    public void listNextDances(Vector<DanceFloorSet> dfsa)
     {
-        labels.get(0).get(0).setText("New dance");
+        int i = 0;
+        for (DanceFloorSet dfs : dfsa)
+        {
+            labels.get(i).get(0).setText(dfs.get(0).toString());
+            adjustFontSize(labels.get(i).get(0));
+            ++i;
+        }
+    }
+    
+    /**
+     * @see https://stackoverflow.com/questions/2715118/how-to-change-the-size-of-the-font-of-a-jlabel-to-take-the-maximum-size
+     **/
+    private void adjustFontSize(JLabel label)
+    {
+        
+        Font font = label.getFont();
+        String text = label.getText();
+        
+        int stringWidth = label.getFontMetrics(font).stringWidth(text);
+        int componentWidth = label.getWidth();
+        
+        // Find out how much the font can grow in width.
+        double widthRatio = (double) componentWidth / (double) stringWidth;
+        
+        int newFontSize = (int) (font.getSize() * widthRatio);
+        int componentHeight = label.getHeight();
+        
+        // Pick a new font size so it will not be larger than the height of label.
+        int fontSizeToUse = Math.min(newFontSize, componentHeight);
+        
+        // Set the label's font size to the newly determined size.
+        label.setFont(new Font(font.getName(), Font.PLAIN, fontSizeToUse));
     }
 }

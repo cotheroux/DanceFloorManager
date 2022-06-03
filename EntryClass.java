@@ -19,6 +19,8 @@ public class EntryClass
         dfs1.add(d1);
         Dance d2 = new Dance("Here we go");
         dfs1.add(d2);
+        Dance d3 = new Dance("Doodah");
+        dfs1.add(d3);
         DanceFloorSetDisplayPanel danceFloorPanel = new DanceFloorSetDisplayPanel(dfs1);
         frame.getContentPane().add(danceFloorPanel);
         

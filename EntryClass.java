@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import java.util.Vector;
 
@@ -25,6 +26,20 @@ public class EntryClass
         danceFloorPanel.setBackground(Color.black);
         danceFloorPanel.setForeground(Color.white);
         frame.getContentPane().add(danceFloorPanel);
+        
+        JButton btn = new JButton("OK");
+        frame.add(btn, BorderLayout.PAGE_END);
+        
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                DanceFloorSet newDfs = new DanceFloorSet();
+                Dance newDance = new Dance("Nouvelle danse");
+                newDfs.add(newDance);
+                danceFloorPanel.setDanceFloor(newDfs);
+            }
+        });
         
         frame.setLocationRelativeTo(null);
         frame.pack();

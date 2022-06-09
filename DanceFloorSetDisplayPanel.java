@@ -10,7 +10,7 @@ import javax.swing.SwingConstants;
 import java.awt.FontMetrics;
 
 /**
- * GUI to edit a single dance.
+ * GUI to display a single dance floor set.
  **/
 public class DanceFloorSetDisplayPanel extends JPanel
 {
@@ -19,23 +19,41 @@ public class DanceFloorSetDisplayPanel extends JPanel
     public DanceFloorSetDisplayPanel(DanceFloorSet set)
     {
         super();
-        GridLayout layout = new GridLayout(1, set.size()); // 1 row, many cols as necessary.
+        labels = new Vector<JLabel>();
+
+        this.setDanceFloor(set);
+        this.addComponentListener(new ResizeListener());
+    }
+    
+    //-------------------------------------------------------------------------
+    public void setDanceFloor(DanceFloorSet danceFloors)
+    {
+        this.removeLabels();
+        GridLayout layout = new GridLayout(1, danceFloors.size()); // 1 row, many cols as necessary.
         layout.setHgap(10);
         //layout.setVgap(10);
         this.setLayout(layout);
 
-        labels = new Vector<JLabel>();
-
-        //for (Dance d: set) // @todo Implements iterator
-        for (int i = 0; i < set.size(); ++i)
+        //for (Dance d: danceFloors) // @todo Implements iterator
+        for (int i = 0; i < danceFloors.size(); ++i)
         {
-            Dance d = set.get(i);
+            Dance d = danceFloors.get(i);
             JLabel danceNameLabel = new JLabel(d.toString(), SwingConstants.CENTER);
+            danceNameLabel.setForeground(this.getForeground());
             this.add(danceNameLabel);
             labels.add(danceNameLabel);
         }
         
-        this.addComponentListener(new ResizeListener());
+        //@todo n'affiche pas le label? this.repaint();
+    }
+    
+    private void removeLabels()
+    {
+        for (JLabel label: labels)
+        {
+            this.remove(label);
+        }
+        labels.clear();
     }
     
     //-------------------------------------------------------------------------

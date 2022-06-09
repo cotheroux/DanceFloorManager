@@ -15,6 +15,9 @@ public class EntryClass
         //frame.getContentPane().add(textLabel, BorderLayout.CENTER);
         //frame.getContentPane().add(textLabel);
         
+        //AllDanceFloorSetsDisplayPanel dancesPanel = new AllDanceFloorSetsDisplayPanel(5);
+        //frame.getContentPane().add(dancesPanel, BorderLayout.CENTER);
+        
         DanceFloorSet dfs1 = new DanceFloorSet();
         Dance d1 = new Dance("Chill Factor");
         dfs1.add(d1);

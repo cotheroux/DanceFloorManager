@@ -22,6 +22,8 @@ public class EntryClass
         Dance d3 = new Dance("Doodah");
         dfs1.add(d3);
         DanceFloorSetDisplayPanel danceFloorPanel = new DanceFloorSetDisplayPanel(dfs1);
+        danceFloorPanel.setBackground(Color.black);
+        danceFloorPanel.setForeground(Color.white);
         frame.getContentPane().add(danceFloorPanel);
         
         frame.setLocationRelativeTo(null);
@@ -53,7 +55,8 @@ public class EntryClass
         dfs3.add(d3);
         dfsa.add(dfs3);
         
-        displayWindow.listNextDances(dfsa);*/
+        displayWindow.listNextDances(dfsa);
+        /**/
 	}
 }
 // @see https://stackoverflow.com/questions/9311720/how-to-change-jlabel-font-size-to-fill-jpanel-free-space-while-resizing

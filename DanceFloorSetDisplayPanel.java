@@ -38,20 +38,20 @@ public class DanceFloorSetDisplayPanel extends JPanel
         for (int i = 0; i < danceFloors.size(); ++i)
         {
             Dance d = danceFloors.get(i);
-            JLabel danceNameLabel = new JLabel(d.toString(), SwingConstants.CENTER);
+            JLabel danceNameLabel = new ResizeLabelFont(d.toString());
             danceNameLabel.setForeground(this.getForeground());
             this.add(danceNameLabel);
             labels.add(danceNameLabel);
         }
         
         //@todo n'affiche pas le label? this.repaint();
-        this.revalidate();
-        this.repaint();
+        //this.revalidate();
+        //this.repaint();
         
-        for (JLabel label: labels)
+        /*for (JLabel label: labels)
         {
             adjustFontSize(label);
-        }
+        }*/
     }
     
     private void removeLabels()
@@ -120,7 +120,7 @@ public class DanceFloorSetDisplayPanel extends JPanel
         {
             for (JLabel label : ((DanceFloorSetDisplayPanel)e.getComponent()).labels)
             {
-                adjustFontSize(label);
+                //adjustFontSize(label);
             }
         }
     }

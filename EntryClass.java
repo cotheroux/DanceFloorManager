@@ -51,7 +51,7 @@ public class EntryClass
     
 	public static void main(String args[])
 	{
-        ResizeLabelFont label=new ResizeLabelFont("Some text");
+        /*ResizeLabelFont label=new ResizeLabelFont("Some text");
         JFrame frame=new JFrame("Resize label font");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
@@ -59,9 +59,9 @@ public class EntryClass
  
         frame.setSize(300,300);
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        frame.setVisible(true);*/
         
-        //createWindow();
+        createWindow();
         /*DisplayWindow displayWindow = new DisplayWindow();
         ControlWindow controlWindow = new ControlWindow(displayWindow);
         

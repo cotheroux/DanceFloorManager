@@ -27,6 +27,8 @@ public class ResizeLabelFont extends JLabel {
             return;
         }
         Rectangle r=l.getBounds();
+        r.x = 0;
+        r.y = 0;
         int fontSize=MIN_FONT_SIZE;
         Font f=l.getFont();
  

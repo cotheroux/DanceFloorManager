@@ -44,14 +44,7 @@ public class DanceFloorSetDisplayPanel extends JPanel
             labels.add(danceNameLabel);
         }
         
-        //@todo n'affiche pas le label? this.repaint();
-        //this.revalidate();
-        //this.repaint();
-        
-        /*for (JLabel label: labels)
-        {
-            adjustFontSize(label);
-        }*/
+        this.revalidate();
     }
     
     private void removeLabels()

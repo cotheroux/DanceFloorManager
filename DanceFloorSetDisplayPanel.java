@@ -38,7 +38,7 @@ public class DanceFloorSetDisplayPanel extends JPanel
         for (int i = 0; i < danceFloors.size(); ++i)
         {
             Dance d = danceFloors.get(i);
-            JLabel danceNameLabel = new ResizeLabelFont(d.toString());
+            JLabel danceNameLabel = new ResizeLabelFont(d.toString(), SwingConstants.CENTER);
             danceNameLabel.setForeground(this.getForeground());
             this.add(danceNameLabel);
             labels.add(danceNameLabel);

@@ -5,20 +5,26 @@ import java.util.Vector;
 
 public class EntryClass
 {
+    protected static Vector<DanceFloorSet> dances;
+    
     private static void createWindow()
     {
         JFrame frame = new JFrame("Simple GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        dances = new Vector<DanceFloorSet>();
         
         //JLabel textLabel = new JLabel("I'm a label in the window", SwingConstants.CENTER);
         //textLabel.setPreferredSize(new Dimension(300, 100));
         //frame.getContentPane().add(textLabel, BorderLayout.CENTER);
         //frame.getContentPane().add(textLabel);
         
-        //AllDanceFloorSetsDisplayPanel dancesPanel = new AllDanceFloorSetsDisplayPanel(5);
-        //frame.getContentPane().add(dancesPanel, BorderLayout.CENTER);
+        AllDanceFloorSetsDisplayPanel dancesPanel = new AllDanceFloorSetsDisplayPanel(5);
+        dancesPanel.setBackground(Color.black);
+        dancesPanel.setForeground(Color.white);
+        frame.getContentPane().add(dancesPanel, BorderLayout.CENTER);
         
-        DanceFloorSet dfs1 = new DanceFloorSet();
+        /*DanceFloorSet dfs1 = new DanceFloorSet();
         Dance d1 = new Dance("Chill Factor");
         dfs1.add(d1);
         Dance d2 = new Dance("Here we go");
@@ -28,19 +34,60 @@ public class EntryClass
         DanceFloorSetDisplayPanel danceFloorPanel = new DanceFloorSetDisplayPanel(dfs1);
         danceFloorPanel.setBackground(Color.black);
         danceFloorPanel.setForeground(Color.white);
-        frame.getContentPane().add(danceFloorPanel);
+        frame.getContentPane().add(danceFloorPanel);*/
+        //DanceHistoryPanel danceHistoryPanel = new DanceHistoryPanel();
+        //frame.getContentPane().add(danceHistoryPanel);
         
-        JButton btn = new JButton("OK");
+        JLabel etiquette = new JLabel("Etiquette");
+        frame.add(etiquette, BorderLayout.PAGE_START);
+        
+        JButton btn = new JButton("Ajoute une danse");
         frame.add(btn, BorderLayout.PAGE_END);
         
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                DanceFloorSet newDfs = new DanceFloorSet();
-                Dance newDance = new Dance("Nouvelle danse");
-                newDfs.add(newDance);
-                danceFloorPanel.setDanceFloor(newDfs);
+                String danceName = JOptionPane.showInputDialog("Entrez le nom de la nouvelle danse:");
+                if (danceName != null)
+                {
+                    DanceFloorSet newDfs = new DanceFloorSet();
+                    Dance newDance = new Dance(danceName);
+                    newDfs.add(newDance);
+                    dances.add(newDfs);
+                    System.out.println(newDance.toString());
+                    //danceFloorPanel.setDanceFloor(newDfs);
+                    dancesPanel.set(dances);
+                }
+            }
+        });
+        
+        JButton btnSupprime = new JButton("Enlève la dernière danse");
+        frame.add(btnSupprime, BorderLayout.LINE_END);
+        
+        btnSupprime.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                if (dances.size() > 0)
+                {
+                    // Remove last dance.
+                    dances.remove(dances.size() - 1);
+                    dancesPanel.set(dances);
+                }
+            }
+        });
+        
+        JButton btnLine = new JButton("---");
+        frame.add(btnLine, BorderLayout.LINE_START);
+        
+        btnLine.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                //System.out.println("---------------------");
+                frame.remove(etiquette);
+                frame.revalidate();
             }
         });
         
@@ -61,6 +108,7 @@ public class EntryClass
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);*/
         
+        //JOptionPane.showMessageDialog(null, "Eggs are not supposed to be green.");
         createWindow();
         /*DisplayWindow displayWindow = new DisplayWindow();
         ControlWindow controlWindow = new ControlWindow(displayWindow);

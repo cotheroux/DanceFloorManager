@@ -47,6 +47,20 @@ public class DanceFloorSetDisplayPanel extends JPanel
         this.revalidate();
     }
     
+    //-------------------------------------------------------------------------
+    /**
+     *
+     **/
+    public void clear()
+    {
+        this.removeLabels();
+        this.repaint();
+    }
+    
+    //-------------------------------------------------------------------------
+    /**
+     *
+     **/
     private void removeLabels()
     {
         for (JLabel label: labels)

@@ -23,8 +23,6 @@ public class AllDanceFloorSetsDisplayPanel extends JPanel
         for (int i = 0; i < nb; ++i)
         {
             DanceFloorSet danceFloorSet = new DanceFloorSet();
-            Dance d1 = new Dance("Chill Factor");
-            danceFloorSet.add(d1);
             
             DanceFloorSetDisplayPanel danceFloorSetDisplayPanel = new DanceFloorSetDisplayPanel(danceFloorSet);
             this.add(danceFloorSetDisplayPanel);
@@ -34,7 +32,7 @@ public class AllDanceFloorSetsDisplayPanel extends JPanel
     
     //-------------------------------------------------------------------------
     /**
-     * Sets the foreground color of this component and every labels inside it.
+     * Sets the foreground color of this component and every panels inside it.
      **/
     public void setForeground(Color fg)
     {
@@ -45,6 +43,46 @@ public class AllDanceFloorSetsDisplayPanel extends JPanel
             for (DanceFloorSetDisplayPanel danceFloorSetDisplayPanel : danceFloorSetDisplayPanels)
             {
                 danceFloorSetDisplayPanel.setForeground(fg);
+            }
+        }
+    }
+
+    //-------------------------------------------------------------------------
+    /**
+     * Sets the background color of this component and every panels inside it.
+     **/
+    public void setBackground(Color fg)
+    {
+        super.setBackground(fg);
+
+        if (danceFloorSetDisplayPanels != null)
+        {
+            for (DanceFloorSetDisplayPanel danceFloorSetDisplayPanel : danceFloorSetDisplayPanels)
+            {
+                danceFloorSetDisplayPanel.setBackground(fg);
+            }
+        }
+    }
+
+    //-------------------------------------------------------------------------
+    /**
+     *
+     **/
+    public void set(Vector<DanceFloorSet> dances)
+    {
+        int i = 0;
+        //Vector<DanceFloorSetDisplayPanel> danceFloorSetDisplayPanels;
+        for (DanceFloorSetDisplayPanel danceFloorSetDisplayPanel : danceFloorSetDisplayPanels)
+        {
+            System.out.println("AllDanceFloorSetsDisplayPanel: " + i);
+            if (i < dances.size())
+            {
+                danceFloorSetDisplayPanel.setDanceFloor(dances.get(i++));
+            }
+            else
+            {
+                System.out.println("AllDanceFloorSetsDisplayPanel: " + "Clear");
+                danceFloorSetDisplayPanel.clear();
             }
         }
     }

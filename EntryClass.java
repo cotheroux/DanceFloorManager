@@ -48,7 +48,13 @@ public class EntryClass
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                String danceName = JOptionPane.showInputDialog("Entrez le nom de la nouvelle danse:");
+                dances.add(_tempAddDance("Aloha"));
+                dances.add(_tempAddDance("Chill Factor"));
+                dances.add(_tempAddDance("The Heartbreaker"));
+                dances.add(_tempAddDance("Clap Happy"));
+                dances.add(_tempAddDance("Better by the beer"));
+                dances.add(_tempAddDance("Lève ton verre"));
+                /*String danceName = JOptionPane.showInputDialog("Entrez le nom de la nouvelle danse:");
                 if (danceName != null)
                 {
                     DanceFloorSet newDfs = new DanceFloorSet();
@@ -58,11 +64,12 @@ public class EntryClass
                     System.out.println(newDance.toString());
                     //danceFloorPanel.setDanceFloor(newDfs);
                     dancesPanel.set(dances);
-                }
+                }*/
+                dancesPanel.set(dances);
             }
         });
         
-        JButton btnSupprime = new JButton("Enlève la dernière danse");
+        /*JButton btnSupprime = new JButton("Enlève la dernière danse");
         frame.add(btnSupprime, BorderLayout.LINE_END);
         
         btnSupprime.addActionListener(new ActionListener() {
@@ -76,9 +83,31 @@ public class EntryClass
                     dancesPanel.set(dances);
                 }
             }
+        });*/
+        
+        JButton btnUp = new JButton("UP");
+        frame.add(btnUp, BorderLayout.LINE_START);
+        
+        btnUp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                dancesPanel.previous();
+            }
         });
         
-        JButton btnLine = new JButton("---");
+        JButton btnDown = new JButton("DOWN");
+        frame.add(btnDown, BorderLayout.LINE_END);
+        
+        btnDown.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                dancesPanel.next();
+            }
+        });
+
+        /*JButton btnLine = new JButton("---");
         frame.add(btnLine, BorderLayout.LINE_START);
         
         btnLine.addActionListener(new ActionListener() {
@@ -89,11 +118,22 @@ public class EntryClass
                 frame.remove(etiquette);
                 frame.revalidate();
             }
-        });
+        });*/
         
         frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
+    }
+    
+    /**
+     * Temporary, add a dance to the list.
+     **/
+    public static DanceFloorSet _tempAddDance(String s)
+    {
+        DanceFloorSet newDfs = new DanceFloorSet();
+        Dance newDance = new Dance(s);
+        newDfs.add(newDance);
+        return newDfs;
     }
     
 	public static void main(String args[])
